@@ -69,8 +69,13 @@ function Snowman(props) {
       </button>
     ));
   }
-  // <p className="Snowman-word">{guessedWord()}</p>
-  // <p>{generateButtons()}</p>
+
+  function resetGame () {
+    setNWrong(0);
+    setGuessedLetters(new Set());
+    setAnswer(() => randomWord(props.words));
+  }
+
   /** render: render game */
   return (
     <div className="Snowman">
@@ -79,6 +84,7 @@ function Snowman(props) {
       {nWrong < props.maxWrong ? <p className="Snowman-word">{guessedWord()}</p> 
                                : <p className="lose">You lose, Answer is {answer}</p>}
       {nWrong < props.maxWrong ? <p>{generateButtons()}</p> : "" }
+      <button className="reset" onClick={resetGame}>Reset</button>
     </div>
   );
 }
