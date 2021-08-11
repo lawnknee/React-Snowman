@@ -156,6 +156,11 @@ exports[`matches snapshot 1`] = `
         z
       </button>
     </p>
+    <button
+      class="Snowman-reset"
+    >
+      Reset
+    </button>
   </div>
 </div>
 `;

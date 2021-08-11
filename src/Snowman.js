@@ -29,7 +29,7 @@ function Snowman(props) {
 
   const [nWrong, setNWrong] = useState(0);
   const [guessedLetters, setGuessedLetters] = useState(new Set());
-  const [answer, setAnswer] = useState(() => randomWord(props.words));
+  const [answer, setAnswer] = useState(() => randomWord(props.words)); //What if we don't use callback?
 
   /** guessedWord: show current-state of word:
    if guessed letters are {a,p,e}, show "app_e" for "apple"
@@ -70,10 +70,11 @@ function Snowman(props) {
     ));
   }
 
+  
   function resetGame () {
     setNWrong(0);
     setGuessedLetters(new Set());
-    setAnswer(() => randomWord(props.words));
+    setAnswer(randomWord(props.words)); //callback not necessary
   }
 
   /** render: render game */
@@ -82,9 +83,9 @@ function Snowman(props) {
       <img src={(props.images)[nWrong]} alt={nWrong} />
       <p className="Snowman-numWrong">Number wrong: {nWrong}</p>
       {nWrong < props.maxWrong ? <p className="Snowman-word">{guessedWord()}</p> 
-                               : <p className="lose">You lose, Answer is {answer}</p>}
-      {nWrong < props.maxWrong ? <p>{generateButtons()}</p> : "" }
-      <button className="reset" onClick={resetGame}>Reset</button>
+                               : <p className="Snowman-lose">You lose, Answer is {answer}</p>}
+      {nWrong < props.maxWrong ? <p>{generateButtons()}</p> : null }
+      <button className="Snowman-reset" onClick={resetGame}>Reset</button>
     </div>
   );
 }

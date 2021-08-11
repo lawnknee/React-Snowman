@@ -21,7 +21,7 @@ it("should display 'You lose' after maxWrong is reached.", function () {
   fireEvent.click(wrongLtr1);
   fireEvent.click(wrongLtr2);
 
-  expect(container.querySelector(".lose")).toHaveTextContent("You lose")
+  expect(container.querySelector(".Snowman-lose")).toHaveTextContent("You lose")
 })
 
 it("should display last image after maxWrong is reached", function () {
