@@ -35,8 +35,8 @@ function Snowman(props) {
    */
   function guessedWord() {
     return answer
-        .split("")
-        .map(ltr => (guessedLetters.has(ltr) ? ltr : "_"));
+      .split("")
+      .map(ltr => (guessedLetters.has(ltr) ? ltr : "_"));
   }
 
   /** handleGuess: handle a guessed letter:
@@ -58,25 +58,27 @@ function Snowman(props) {
   /** generateButtons: return array of letter buttons to render */
   function generateButtons() {
     return "abcdefghijklmnopqrstuvwxyz".split("").map(ltr => (
-        <button
-            key={ltr}
-            value={ltr}
-            onClick={handleGuess}
-            disabled={guessedLetters.has(ltr)}
-        >
-          {ltr}
-        </button>
+      <button
+        key={ltr}
+        value={ltr}
+        onClick={handleGuess}
+        disabled={guessedLetters.has(ltr)}
+      >
+        {ltr}
+      </button>
     ));
   }
-
+  // <p className="Snowman-word">{guessedWord()}</p>
+  // <p>{generateButtons()}</p>
   /** render: render game */
   return (
-      <div className="Snowman">
-        <img src={(props.images)[nWrong]} alt={nWrong} />
-        <p className="Snowman-numWrong">Number wrong: {nWrong}</p>
-        <p className="Snowman-word">{guessedWord()}</p>
-        <p>{generateButtons()}</p>
-      </div>
+    <div className="Snowman">
+      <img src={(props.images)[nWrong]} alt={nWrong} />
+      <p className="Snowman-numWrong">Number wrong: {nWrong}</p>
+      {nWrong < props.maxWrong ? <p className="Snowman-word">{guessedWord()}</p> 
+                               : <p className="lose">You lose, Answer is {answer}</p>}
+      {nWrong < props.maxWrong ? <p>{generateButtons()}</p> : "" }
+    </div>
   );
 }
 
